@@ -1,3 +1,5 @@
+⭐ [GET PRO VERSION ON BOOSTY](https://boosty.to/hans_ritter/bundle/d5848878-3cab-49a4-a231-ae58d4c2e266) — cities, roads, industrial zones, fog of war, and saving system!
+
 # oxide-world-generator-lite
 Lite version of procedural world generator for Godot 4.x
 
