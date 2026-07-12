@@ -3,6 +3,7 @@ Lite version of procedural world generator for Godot 4.x
 
 ## Features:
 * Infinite map generation using FastNoiseLite
+* Slider-Adjustable World Configuration**: Fine-tune procedural world generation parameters (Lakes, Rivers, Forests, Hills, Swamps) in real-time using interactive menu sliders.
 * Fluid biome transitions: Forests, Taiga, Swamps, Lakes, Rivers, Hills, Plains, Shore
 * Smooth performance with automatic chunk unloading
 
