@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dt0jnpbkayeqk"]
+
+[ext_resource type="Script" uid="uid://bimxqauq537of" path="res://addons/oxide_world_gen_lite/Scripts/base_building.gd" id="1_lqln2"]
+[ext_resource type="Texture2D" uid="uid://yahh6o5g53dd" path="res://addons/oxide_world_gen_lite/Sprites/Buildings/houses_4x4_atlas.png" id="2_m3vsn"]
+
+[node name="BaseBuilding" type="Node2D" unique_id=611849510]
+script = ExtResource("1_lqln2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1038480393]
+texture = ExtResource("2_m3vsn")
+hframes = 10
+vframes = 10

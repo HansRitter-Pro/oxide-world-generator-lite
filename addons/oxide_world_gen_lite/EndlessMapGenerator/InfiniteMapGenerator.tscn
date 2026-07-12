@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://3ii8gw2tbmoy"]
+
+[ext_resource type="Script" uid="uid://bcqd1m1lg168t" path="res://addons/oxide_world_gen_lite/EndlessMapGenerator/infinite_map_generator.gd" id="1_8v8j3"]
+
+[node name="InfiniteMapGenerator" type="Node2D"]
+script = ExtResource("1_8v8j3")
