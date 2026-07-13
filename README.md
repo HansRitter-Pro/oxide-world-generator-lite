@@ -30,6 +30,7 @@ The project includes a fully integrated, mathematically accurate hardcore surviv
 <img width="963" height="542" alt="2" src="https://github.com/user-attachments/assets/de057e55-a71e-4948-b6b7-711c619fe7bb" />
 <img width="962" height="542" alt="1" src="https://github.com/user-attachments/assets/7e254218-0a56-43ab-a5a6-b6f9b05a0374" />
 <img width="952" height="542" alt="6" src="https://github.com/user-attachments/assets/57363fe9-1220-4a14-9aa7-1a41050d2814" />
+<img width="1376" height="768" alt="Inscription_Oxide_Infinite_World" src="https://github.com/user-attachments/assets/8ea7fe17-40cc-4443-a823-b7e8a988161b" />
 
 
  
