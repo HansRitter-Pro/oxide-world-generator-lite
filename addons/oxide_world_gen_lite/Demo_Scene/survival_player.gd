@@ -33,8 +33,8 @@ var biome_stats = {
 	8: {"name": "Hills", "speed": 0.5, "energy": 0.08, "time": 0.3, "thirst_mult": 1.2, "color": Color(0.5, 0.45, 0.4)},
 	10: {"name": "Deep water/Lake", "speed": 0.1, "energy": 0.4, "time": 1.2, "thirst_mult": 1.0, "color": Color(0.05, 0.25, 0.55)},
 	14: {"name": "Taiga", "speed": 0.6, "energy": 0.05, "time": 0.25, "thirst_mult": 1.0, "color": Color(0.1, 0.3, 0.2)},
-	
 }
+
 var astar = AStarGrid2D.new()
 var camera: Camera2D
 var game_log: Label
@@ -113,23 +113,21 @@ func is_infinite_energy_enabled() -> bool:
 	var main_menu = get_tree().current_scene.find_child("MainMenu", true, false)
 	if main_menu and "infinite_energy" in main_menu:
 		return main_menu.infinite_energy
-	return true # Если по какой-то причине меню не найдено, спасаем игрока
+	return true
 
-# 🔥 ПОЛНЫЙ СБРОС СТАТОВ И ВРЕМЕНИ ДЛЯ НОВОГО МИРА
 func reset_player_data():
 	explored_tiles.clear() 
 	path.clear()           
 	is_moving = false
 	total_distance_meters = 0.0
 	
-	# Сброс времени и статов
-	current_time = 480.0 # 08:00 утра
+	current_time = 480.0
 	current_energy = max_energy
 	current_hunger = max_hunger
 	current_thirst = max_thirst
 	
 	update_ui_bars()
-	update_day_night_lighting() # Мгновенно убирает ночную темноту
+	update_day_night_lighting()
 	
 	if distance_label:
 		distance_label.text = "Distance: 0.00 km"
@@ -298,8 +296,8 @@ func _process(delta):
 		
 		var b_speed_mult = 1.0
 		var b_energy_cost = 0.02 
-		var b_time_cost = 0.15   
-		var b_thirst_mult = 1.0    
+		var b_time_cost = 0.15    
+		var b_thirst_mult = 1.0     
 		
 		if biome_stats.has(tile_id):
 			b_speed_mult = biome_stats[tile_id]["speed"]
@@ -366,13 +364,18 @@ func _input(event):
 	if main_menu and main_menu.visible: return
 
 	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP: 
-			if camera: camera.zoom += Vector2(0.1, 0.1)
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN: 
-			if camera: camera.zoom -= Vector2(0.1, 0.1)
-		if camera:
-			camera.zoom.x = clamp(camera.zoom.x, 0.05, 2.0)
-			camera.zoom.y = clamp(camera.zoom.y, 0.05, 2.0)
+		# Фикс бага: Считаем новый масштаб в безопасной временной переменной
+		if camera and (event.button_index == MOUSE_BUTTON_WHEEL_UP or event.button_index == MOUSE_BUTTON_WHEEL_DOWN):
+			var target_zoom = camera.zoom
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP: 
+				target_zoom += Vector2(0.1, 0.1)
+			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN: 
+				target_zoom -= Vector2(0.1, 0.1)
+			
+			# Зажимаем значения в жесткие рамки до применения (0.1 спасает от ошибки нулевого зума)
+			target_zoom.x = clamp(target_zoom.x, 0.1, 2.0)
+			target_zoom.y = clamp(target_zoom.y, 0.1, 2.0)
+			camera.zoom = target_zoom
 
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if world_map == null: return
