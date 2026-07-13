@@ -1,26 +1,32 @@
-⭐ [GET PRO VERSION ON BOOSTY](https://boosty.to/hans_ritter/bundle/d5848878-3cab-49a4-a231-ae58d4c2e266) — cities, roads, industrial zones, fog of war, and saving system!
+⭐ [GET PRO VERSION ON BOOSTY](https://boosty.to/hans_ritter/bundle/d5848878-3cab-49a4-a231-ae58d4c2e266) — Cities, roads, industrial zones, shader fog of war, and save/load system!
 
-# oxide-world-generator-lite
-Lite version of procedural world generator for Godot 4.x
+An advanced, high-performance procedural 2D infinite world generator built for Godot 4.
 
-## Features:
-* Infinite map generation using FastNoiseLite
-* Slider-Adjustable World Configuration**: Fine-tune procedural world generation parameters (Lakes, Rivers, Forests, Hills, Swamps) in real-time using interactive menu sliders.
-* Fluid biome transitions: Forests, Taiga, Swamps, Lakes, Rivers, Hills, Plains, Shore
-* Smooth performance with automatic chunk unloading
+### Features (Lite Edition)
+* **Infinite Map Generation**: Endless procedural world scaling using FastNoiseLite.
+* **Slider-Adjustable World Configuration**: Fine-tune procedural world generation parameters (Lakes, Rivers, Forests, Hills, Swamps) in real-time using interactive menu sliders.
+* **Fluid Biome Transitions**: Smoothly blends diverse environments including Forests, Taiga, Swamps, and Lakes.
+* **Performance Optimization**: Seamless automatic chunk loading and unloading for a stable frame rate.
 
-## Advanced Survival Simulation Features (Core Mechanics)
+### 👑 Exclusive PRO Edition Features (Why Upgrade?)
+The PRO Edition transforms this generator into a complete, feature-rich Post-Apocalyptic Survival/Tactical Game Template:
+* **Procedural Civilizations & Urban Grid**: Spawns diverse human settlements (Outposts, Villages, Towns, Megacities) with functional buildings: Administration, Police Stations, Fire Departments, Hospitals, Shops, Supermarkets, Churches, Libraries.
+* **Interconnected Road Network & Roadside POIs**: Advanced global path-generation connects distant towns with a persistent highway system featuring Gas Stations, Motels, and Cafes.
+* **Persistent Save & Load System**: Instantly save and load your entire game state (squad coordinates, stats, odometer, world time, and uncovered minimap data).
+* **Ready-To-Use World Presets**: Pre-configured landscapes: Water World, Dead Swamplands, Endless Forests, and Overcrowded Sector.
+* **Anomalous Hazard System (Toggleable)**: Dynamically spawns dangerous Anomalous Zones wrapped in a custom-shaded Purple Fog.
 
-The project includes a fully integrated, mathematically accurate hardcore survival system running on top of the procedural map:
+### Advanced Survival Simulation Features (Core Mechanics in Both Versions)
+* **Grid-to-Real-World Scaling**: 1 map tile equals exactly 10 human steps (10 meters).
+* **Odometer / Distance Tracker**: Calculated in real-time and displayed on the UI in kilometers.
+* **Dynamic Day/Night Cycle**: Smooth lighting transition system with a native 24-hour clock format (HH:MM).
+* **Biome-Dependent Travel Time**: Complex terrains take longer to cross. Night-time triggers a harsh 5x speed penalty.
+* **Smart Energy, Hunger & Thirst Simulation**: Metabolic rates updated continuously based on elapsed time and biome difficulty.
+* **Tactical Mouse-Wheel Zooming**: Smooth camera scaling to scout the terrain and plan routes.
+* **High-Performance Minimap Rendering**: Highly responsive radar updating instantly with pixel-perfect accuracy.
 
-* **Grid-to-Real-World Scaling**: Map scale is finely tuned for realistic exploration. **1 map tile equals exactly 10 human steps** (10 meters).
-* **Odometer / Distance Tracker**: The squad's total traveled path is continuously calculated in real-time and displayed on the UI in **kilometers (e.g., Distance: 4.15 km)** based on actual tiles crossed.
-* **Dynamic Day/Night Cycle**: Features a smooth lighting transition system that shifts ambient colors dynamically. Current world time is displayed using a native **24-hour clock format (HH:MM)**.
-* **Biome-Dependent Travel Time**: Movement duration is calculated dynamically. Traveling through complex terrains like *Swamps* or *Deep Water* takes significantly longer than walking down an *Old Highway*. Moving at night triggers a harsh **5x speed penalty**.
-* **Smart Energy & Stamina Drain**: Energy consumption accurately scales depending on the current biome's difficulty and is heavily amplified by night-time fatigue.
-* **Advanced Hunger & Thirst Simulation**: Metabolic rates are updated continuously based on elapsed time. Thirst features dynamic multipliers—strenuous biomes (such as *Swamps* or *Hills*) cause the squad to dehydrate much faster.
-* * **Tactical Mouse-Wheel Zooming**: The camera system supports dynamic map scaling, allowing players to smoothly zoom in and out using the mouse scroll wheel to scout the terrain and plan routes.
-* **High-Performance Minimap Rendering**: A highly responsive, fog-of-war integrated radar that updates instantly as the squad moves, flawlessly rendering discovered biomes with pixel-perfect accuracy.
+--------------------------------------------------
+
 
 
  ## Screenshots:
