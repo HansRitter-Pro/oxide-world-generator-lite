@@ -33,7 +33,8 @@ func _ready():
 func refresh_map():
 	if tile_map == null: tile_map = get_tree().current_scene.find_child("WorldMap", true, false)
 	if squad == null: squad = get_tree().current_scene.find_child("SurvivalPlayer", true, false)
-	if tile_map == null or config == null: return
+	if tile_map == null or config == null: 
+		return
 	
 	tile_map.clear()
 	generated_tiles.clear()
@@ -52,7 +53,7 @@ func refresh_map():
 		fog_map.clear()
 		
 	# В LITE версии туман всегда невидим на основном экране!
-	fog_map.visible = false 
+	fog_map.visible = false
 	
 	setup_noises()
 	force_spawn_at_start_location()
@@ -61,8 +62,12 @@ func refresh_map():
 	print("🌍 LITE Oxide Map Loaded. Minimap completely fixed.")
 
 func setup_noises():
+	# 🔥 ФИКС СИДОВ И ПОВТОРНОЙ ГЕНЕРАЦИИ КАРТЫ КАК В PRO ВЕРСИИ
+	randomize() # Перемешиваем генератор случайных чисел от времени системы
+	
 	if custom_menu_seed != -1:
 		current_global_seed = custom_menu_seed
+		custom_menu_seed = -1 # Сбрасываем в -1, чтобы следующий клик в меню сгенерировал новый мир!
 	else:
 		current_global_seed = randi()
 		
@@ -73,22 +78,26 @@ func setup_noises():
 	elevation_noise.frequency = 0.004 
 	elevation_noise.domain_warp_enabled = true
 	elevation_noise.domain_warp_amplitude = 10.0 
+	
 	moisture_noise.seed = current_global_seed + 1
 	moisture_noise.noise_type = FastNoiseLite.TYPE_PERLIN
 	moisture_noise.fractal_type = FastNoiseLite.FRACTAL_FBM
 	moisture_noise.fractal_octaves = 2 
 	moisture_noise.frequency = 0.003 
+	
 	detail_noise.seed = current_global_seed + 2
 	detail_noise.noise_type = FastNoiseLite.TYPE_SIMPLEX_SMOOTH
 	detail_noise.fractal_type = FastNoiseLite.FRACTAL_FBM
 	detail_noise.fractal_octaves = 3
 	detail_noise.frequency = 0.015 
+	
 	river_noise.seed = current_global_seed + 3
 	river_noise.noise_type = FastNoiseLite.TYPE_SIMPLEX_SMOOTH
 	river_noise.fractal_type = FastNoiseLite.FRACTAL_NONE 
 	river_noise.frequency = 0.0015 
 	river_noise.domain_warp_enabled = true
 	river_noise.domain_warp_amplitude = 8.0 
+	
 	pine_noise.seed = current_global_seed + 4
 	pine_noise.noise_type = FastNoiseLite.TYPE_SIMPLEX_SMOOTH
 	pine_noise.fractal_type = FastNoiseLite.FRACTAL_FBM
@@ -209,9 +218,9 @@ func generate_single_tile(pos: Vector2i):
 	
 	# 🔥 ОПТИМИЗИРОВАННЫЙ РЕДКИЙ СПАВН ДОМИКОВ
 	if final_id == 7 or final_id == 3 or final_id == 14:
-		if pos.x % 50 == 0 and pos.y % 50 == 0: # Теперь домик возможен только раз в 50 тайлов
+		if pos.x % 50 == 0 and pos.y % 50 == 0: 
 			var roll = abs(pos.x * 73 + pos.y * 37 + current_global_seed) % 100
-			if roll < 3: # Теперь шанс спавна всего 3%
+			if roll < 3: 
 				if _check_space(pos, 2):
 					_spawn_building_at(pos)
 
@@ -237,7 +246,7 @@ func cleanup_distant_tiles(center_pos: Vector2i):
 	for pos in generated_tiles.keys():
 		if pos.distance_to(center_pos) > unload_radius:
 			tile_map.set_cell(pos, -1)
-			if fog_map: fog_map.set_cell(pos, -1) # 🔥 Очистка памяти для тумана
+			if fog_map: fog_map.set_cell(pos, -1) 
 			if active_buildings.has(pos):
 				active_buildings[pos].queue_free()
 				active_buildings.erase(pos)
